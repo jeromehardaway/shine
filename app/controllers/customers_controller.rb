@@ -2,6 +2,9 @@ class CustomersController < ApplicationController
   PAGE_SIZE = 10
 
   def index
+
+    # existing index method
+
     @page = (params[:page] || 0).to_i
     if params[:keywords].present?
       @keywords = params[:keywords]
@@ -9,10 +12,14 @@ class CustomersController < ApplicationController
       @customers = Customer.where(
           customer_search_term.where_clause,
           customer_search_term.where_args).
-        order(customer_search_term.order)
+        order(customer_search_term.order).
         offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     else
       @customers = []
+    end
+    respond_to do |format|
+      format.html {}
+      format.json { render json: @customers }
     end
   end
 end
