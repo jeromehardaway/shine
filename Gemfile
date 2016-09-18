@@ -48,6 +48,7 @@ group :development do
   gem 'poltergeist'
   # END_HIGHLIGHT
   gem 'database_cleaner'
+  gem 'teaspoon-jasmine'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
